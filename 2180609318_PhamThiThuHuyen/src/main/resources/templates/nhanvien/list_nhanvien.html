@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Danh Sách Nhân Viên</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h2>Danh Sách Nhân Viên</h2>
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+        <tr>
+            <th>Mã NV</th>
+            <th>Tên NV</th>
+            <th>Phái</th>
+            <th>Hình Ảnh</th> <!-- Cột mới cho hình ảnh -->
+            <th>Nơi Sinh</th>
+            <th>Mã PB</th>
+            <th>Tên PB</th>
+            <th>Lương</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Loop through the employee list here -->
+        <tr th:each="nhanVien : ${NhanVienList}">
+            <td th:text="${nhanVien.MaNV}">Mã NV</td>
+            <td th:text="${nhanVien.TenNV}">Tên NV</td>
+            <td th:text="${nhanVien.Phai}">Phái</td>
+            <td>
+                <img th:if="${nhanVien.Phai == 'NAM'}" th:src="@{/image/nam.png}" alt="Nam" width="30" height="30">
+                <img th:if="${nhanVien.Phai == 'NU'}" th:src="@{/image/nu.png}" alt="Nữ" width="30" height="30">
+            </td> <!-- Thêm hình ảnh tại đây -->
+            <td th:text="${nhanVien.NoiSinh}">Nơi Sinh</td>
+            <td th:text="${nhanVien.MaPhong}">Mã PB</td>
+            <td th:text="${nhanVien.Luong}">Lương</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
